@@ -5,8 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>AngularJS-Workshops</title>
+    <link rel="stylesheet" href="javascript/vendor/bootstrap-3.2.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app/main.css">
     <script src="javascript/vendor/angular.js"></script>
+    <script src="javascript/vendor/ui-bootstrap-tpls-0.11.0.js"></script>
     <script src="javascript/app/app.js"></script>
     
   </head>
@@ -14,5 +16,6 @@
     <h1>Movie App</h1>
     <h3>{{movies.movie.title}}</h3>
     <h3>{{movies.movie.director}}</h3>
+    <rating ng-model="movies.movie.rate" max="10"></rating>
   </body>
 </html>
