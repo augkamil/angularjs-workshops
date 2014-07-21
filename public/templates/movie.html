@@ -36,8 +36,10 @@
   <div class="row posts-content">
     <h3>dyskusja</h3>
     <div class="row post-form">
-      <input class="col-md-3" type="text" ng-model="movies.current_comment"></input>
-      <button class="col-md-1 btn btn-primary" ng-click="movies.addComment()">Dodaj</button>
+      <form name="movies.post">
+        <input class="col-md-3" type="text" ng-model="movies.current_comment" required></input>
+      </form>
+      <button class="col-md-1 btn btn-primary" ng-click="movies.addComment()" ng-disabled="movies.isAddDisabled()">Dodaj</button>
     </div>
     <ul class="posts">
       <li class="" ng-repeat="comment in movies.movie.comments">
