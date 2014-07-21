@@ -4,33 +4,3 @@ h1 {
 h3 {
   color: green;
 }
-
-.movie-content {
-  margin-top: 40px;
-}
-
-.release-year {
-  padding-top: 25px;
-}
-
-.post-author {
-  padding-top: 4px;
-  color: grey;
-}
-
-.posts {
-  list-style-type: none;
-}
-
-.posts-content {
-  padding-top: 50px;
-}
-
-.posts-content > h3 {
-  color: black;
-}
-
-.post-form {
-  margin-left: 40px;
-}
-

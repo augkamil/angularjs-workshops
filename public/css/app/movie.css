@@ -5,3 +5,24 @@
 .release-year {
   padding-top: 25px;
 }
+/*COMMENTS*/
+.comment-author {
+  padding-top: 4px;
+  color: grey;
+}
+
+.comments {
+  list-style-type: none;
+}
+
+.comments-content {
+  padding-top: 50px;
+}
+
+.comments-content > h3 {
+  color: black;
+}
+
+.comment-form {
+  margin-left: 40px;
+}

@@ -16,12 +16,12 @@ movie_app.controller('MovieCtrl', [
           average_rate: 7.3,
           comments: [
             {
-              body: "asdadasd",
-              author: "Tomek"
+              body: "Manure! I hate manure!",
+              author: "Biff"
             },
             {
-              body: "ghjhgjghjghjg",
-              author: "Tomek"
+              body: "That's about as funny as a screen door on a battleship.",
+              author: "Biff"
             }
           ]
         };
