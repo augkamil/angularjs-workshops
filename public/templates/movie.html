@@ -32,6 +32,23 @@
   <div class="row">
     <h3>{{movies.movie.description}}</h3>
   </div>
+
+  <div class="row posts-content">
+    <h3>dyskusja</h3>
+    <div class="row post-form">
+      <input class="col-md-3" type="text" ng-model="movies.current_comment"></input>
+      <button class="col-md-1 btn btn-primary" ng-click="movies.addComment()">Dodaj</button>
+    </div>
+    <ul class="posts">
+      <li class="" ng-repeat="comment in movies.movie.comments">
+        <div class="row">
+          <h4 class="col-md-2">Komentarz #{{$index+1}}</h4>
+          <h5 class="post-author">{{comment.author}}</h5>
+        </div>
+        {{comment.body}}
+      </li>
+    </ul>
+  </div>
 </div>
 
 

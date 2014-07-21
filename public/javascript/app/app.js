@@ -14,11 +14,32 @@ movie_app.controller('MovieCtrl', [
           release: 1985,
           image: "http://1.fwcdn.pl/po/88/23/8823/7334729.6.jpg",
           average_rate: 7.3,
-          comments: []
+          comments: [
+            {
+              body: "asdadasd",
+              author: "Tomek"
+            },
+            {
+              body: "ghjhgjghjghjg",
+              author: "Tomek"
+            }
+          ]
         };
+
         this.user = {
           name: "Tomek",
           rate: 0
+        };
+
+        this.current_comment = "";
+
+        this.addComment = function() { 
+          var comment = {
+            body: this.current_comment,
+            author: this.user.name
+          }
+          this.movie.comments.push(comment);
+          this.current_comment = "";
         };
     }]
 );
