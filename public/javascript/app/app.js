@@ -17,7 +17,7 @@ movie_app.controller('MovieCtrl', [
           comments: []
         };
         this.user = {
-          name: "Tomek",
+          name: "Biff",
           rate: 0
         };
     }]
