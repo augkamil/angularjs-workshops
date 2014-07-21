@@ -39,7 +39,7 @@
       <form name="movies.post">
         <input class="col-md-3" type="text" ng-model="movies.current_comment" required></input>
       </form>
-      <button class="col-md-1 btn btn-primary" ng-click="movies.addComment()" ng-disabled="movies.isAddDisabled()">Dodaj</button>
+      <button class="col-md-1 btn btn-primary add-post-btn" ng-click="movies.addComment()" ng-disabled="movies.isAddDisabled()">Dodaj</button>
     </div>
     <ul class="posts">
       <li class="" ng-repeat="comment in movies.movie.comments">
