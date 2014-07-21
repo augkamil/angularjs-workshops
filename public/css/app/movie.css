@@ -5,6 +5,7 @@
 .release-year {
   padding-top: 25px;
 }
+
 /*COMMENTS*/
 .comment-author {
   padding-top: 4px;
@@ -25,4 +26,8 @@
 
 .comment-form {
   margin-left: 40px;
+}
+
+.add-comment-btn {
+  margin: -3px 0 0 6px;
 }

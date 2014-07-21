@@ -21,8 +21,8 @@
     <div class="col-md-6 pull-left">
       <div class="row">
         <h4 class="col-md-3">twoja ocena: </h4>
-        <h4 ng-if="movies.user.rate > 0" class="col-md-3">{{movies.user.rate}}</h4>
-        <h4 ng-if="movies.user.rate == 0" class="col-md-3">brak oceny!</h4>
+        <h4 ng-show="movies.user.rate > 0" class="col-md-3">{{movies.user.rate}}</h4>
+        <h4 ng-hide="movies.user.rate > 0" class="col-md-3">brak oceny!</h4>
       </div>
       <div>
         <rating ng-model="movies.user.rate" max="10"></rating>
@@ -36,8 +36,12 @@
   <div class="comments-content">
     <h3>dyskusja</h3>
     <div class="col-md-12 comment-form">
-      <input class="col-md-3" type="text" ng-model="movies.current_comment"></input>
-      <button class="col-md-offset-1 col-md-1 btn btn-primary" ng-click="movies.addComment()">Dodaj</button>
+      <form name="movies.comment">
+        <input class="col-md-3" type="text" ng-model="movies.current_comment" required>
+        </input>
+      </form>
+      <button class="col-md-offset-1 col-md-1 btn btn-primary add-comment-btn" ng-click="movies.addComment()" ng-disabled="movies.isAddDisabled()">
+      Dodaj</button>
     </div>
     <div class="col-md-12">
       <ul class="comments">

@@ -41,5 +41,10 @@ movie_app.controller('MovieCtrl', [
           this.movie.comments.push(comment);
           this.current_comment = "";
         };
+
+        this.isAddDisabled = function() { 
+          return this.comment.$invalid
+        };
+
     }]
 );
