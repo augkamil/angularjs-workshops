@@ -4,3 +4,11 @@ h1 {
 h3 {
   color: green;
 }
+
+.movie-content {
+  margin-top: 40px;
+}
+
+.release-year {
+  padding-top: 25px;
+}
