@@ -19,7 +19,11 @@
       <h3>{{movies.movie.average_rate}} / 10</h3>
     </div>
     <div class="col-md-6 pull-left">
-      <h4>twoja ocena: {{movies.user.rate}}</h4>
+      <div class="row">
+        <h4 class="col-md-3">twoja ocena: </h4>
+        <h4 ng-show="movies.user.rate > 0" class="col-md-3">{{movies.user.rate}}</h4>
+        <h4 ng-hide="movies.user.rate > 0" class="col-md-3">brak oceny!</h4>
+      </div>
       <div>
         <rating ng-model="movies.user.rate" max="10"></rating>
       </div>
