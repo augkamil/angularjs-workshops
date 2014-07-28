@@ -1,10 +1,22 @@
 'use strict';
 
-var movie_app = angular.module('movieApp', ['ui.bootstrap']);
+var movie_app = angular.module('movieApp', ['ui.bootstrap', 'restangular']);
+
+movie_app.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.headers.patch['Content-Type'] = 'application/json';
+  $httpProvider.defaults.headers.common["X-CSRF-Token"] = $("meta[name=csrf-token]").attr("content");
+}]);
+
+movie_app.config(function(RestangularProvider) {
+  RestangularProvider.setBaseUrl('http://workshops.briisk.co');
+  RestangularProvider.setRequestSuffix('.json');
+});
+
+
 
 movie_app.controller('MovieCtrl', [
-             '$scope', 
-    function ($scope) {
+             '$scope', 'Restangular', 
+    function ($scope,   Restangular) {
         this.movie = {
           id: 1,
           title: "Powrót do przyszłości",
@@ -45,6 +57,48 @@ movie_app.controller('MovieCtrl', [
         this.isAddDisabled = function() { 
           return this.post.$invalid
         };
-
     }]
 );
+
+movie_app.controller('MovieListCtrl', [
+             '$scope', 'Restangular', 
+    function ($scope,   Restangular) {
+        $scope.movies = [];
+        $scope.search = {
+          title: ""
+        };
+
+        Restangular.all('movies').getList()
+        .then(function(movies) {
+          $scope.movies = movies;
+        });
+    }]
+);
+
+movie_app.directive('searchBox',function() {
+  return {
+    restrict: 'EA',
+    templateUrl: "templates/search_box.html"
+  }
+});
+
+movie_app.directive('movieTitle',function() {
+  return {
+    restrict: 'EA',
+    templateUrl: "templates/movie_title.html"
+  }
+});
+
+movie_app.directive('rateMovie',function() {
+  return {
+    restrict: 'EA',
+    templateUrl: "templates/rate_movie.html"
+  }
+});
+
+
+
+
+
+
+

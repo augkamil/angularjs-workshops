@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="javascript/vendor/bootstrap-3.2.0-dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app/main.css">
     <link rel="stylesheet" href="css/app/movie.css">
+    <link rel="stylesheet" href="css/app/movie_list.css">
+    <script src="javascript/vendor/jquery-2.1.1.js"></script>
     <script src="javascript/vendor/angular.js"></script>
     <script src="javascript/vendor/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="javascript/vendor/lodash.min.js"></script>
+    <script src="javascript/vendor/restangular.min.js"></script>
     <script src="javascript/app/app.js"></script>
     
   </head>
-  <body ng-controller="MovieCtrl as movies">
-    <section ng-include="'templates/movie.html'"></section>
+  <!-- <body ng-controller="MovieCtrl as movies"> -->
+  <body ng-controller="MovieListCtrl">
+    <!-- <section ng-include="'templates/movie.html'"></section> -->
+    <section ng-include="'templates/movies_list.html'"></section>
   </body>
 </html>

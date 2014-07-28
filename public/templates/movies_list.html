@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="col-md-3 pull-right search-film">
+    <search-box></search-box>
+  </div>
+</div>
+<div class="container">
+  <ul class="posts">
+    <li class="" ng-repeat="movie in movies | filter:{title: search.title}">
+      <div ng-include="'templates/single_movie.html'"></div>
+    </li>
+  </ul>
+</div>
