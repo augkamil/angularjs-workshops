@@ -10,8 +10,32 @@
       <div class="col-md-4"><span>Czas trwania: {{ movie.time }} min</span></div>
     </div>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-3">
     <rate-movie></rate-movie>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-primary btn-sm add-comment" ng-click="isCollapsed = !isCollapsed">Komentarze</button>
+  </div>
+</div>
+
+<div class="row" collapse="isCollapsed">
+  <div class="col-md-offset-1 posts-content2">
+    <h4 class="post-author">Dyskusja</h4>
+    <div class="row post-form2">
+      <form name="post">
+        <input class="col-md-3" type="text" ng-model="tmp.current_comment" required></input>
+      </form>
+      <button class="col-md-1 btn btn-primary add-post-btn btn-sm" ng-click="addComment(movie)" ng-disabled="isAddDisabled()">Wyślij</button>
+    </div>
+    <ul class="posts">
+      <li class="comment col-md-10" ng-repeat="comment in movie.comments">
+        <div class="row">
+          <h4 class="col-md-3">Komentarz #{{$index+1}}</h4>
+          <h5 class="post-author">{{comment.user_name}}</h5>
+        </div>
+        {{comment.body}}
+      </li>
+    </ul>
   </div>
 </div>
 

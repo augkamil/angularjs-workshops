@@ -67,11 +67,33 @@ movie_app.controller('MovieListCtrl', [
         $scope.search = {
           title: ""
         };
+        $scope.user = {
+          name: "Biff",
+          rate: 0
+        };
+        $scope.tmp = {
+          current_comment: ""
+        };
+        $scope.isCollapsed = true;
 
         Restangular.all('movies').getList()
         .then(function(movies) {
           $scope.movies = movies;
         });
+
+        $scope.addComment = function(movie) { 
+          var comment = {
+            body: $scope.tmp.current_comment,
+            user_name: $scope.user.name
+          }
+          movie.comments.push(comment);
+          $scope.tmp.current_comment = "";
+        };
+
+        // $scope.isAddDisabled = function() { 
+        //   return $scope.post.$invalid;
+        // };
+
     }]
 );
 

@@ -6,7 +6,7 @@
 <div class="container">
   <ul class="posts">
     <li class="" ng-repeat="movie in movies | filter:{title: search.title}">
-      <div ng-include="'templates/single_movie.html'"></div>
+      <div class="movie-container" ng-include="'templates/single_movie.html'"></div>
     </li>
   </ul>
 </div>
