@@ -90,10 +90,6 @@ movie_app.controller('MovieListCtrl', [
           $scope.tmp.current_comment = "";
         };
 
-        // $scope.isAddDisabled = function() { 
-        //   return $scope.post.$invalid;
-        // };
-
     }]
 );
 
@@ -118,9 +114,15 @@ movie_app.directive('rateMovie',function() {
   }
 });
 
-
-
-
-
-
-
+movie_app.directive('activeRow', function () {
+  return {
+    link: function (scope, elem) {
+      elem.bind('mouseenter', function () {
+        elem.addClass('active-row');
+      });
+      elem.bind('mouseleave', function () {
+        elem.removeClass('active-row');
+      });
+    }
+  };
+});
