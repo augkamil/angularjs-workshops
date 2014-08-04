@@ -15,49 +15,59 @@ movie_app.config(function(RestangularProvider) {
 
 
 movie_app.controller('MovieCtrl', [
-             '$scope', 'Restangular', 
-    function ($scope,   Restangular) {
-        this.movie = {
-          id: 1,
-          title: "Powrót do przyszłości",
-          director: "Robert Zemeckis",
-          description: "W 1985 roku dr Emmett Brown buduje wehikuł czasu. Jego przyjaciel Marty McFly przenosi się w lata 50. i niechcący przeszkadza w poznaniu się swoim rodzicom.",
-          time: 116,
-          release: 1985,
-          image: "http://1.fwcdn.pl/po/88/23/8823/7334729.6.jpg",
-          average_rate: 7.3,
-          comments: [
-            {
-              body: "asdadasd",
-              author: "Tomek"
-            },
-            {
-              body: "ghjhgjghjghjg",
-              author: "Tomek"
+             '$scope', '$modal', 
+    function ($scope,   $modal) {
+
+      $scope.open = function (movie) {
+
+        var modalInstance = $modal.open({
+          templateUrl: 'templates/movie.html',
+          controller: 'MovieInstanceCtrl',
+          resolve: {
+            movie: function () {
+              return movie;
             }
-          ]
+          }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+        });
+
+      };
+
+
+    }]
+);
+
+movie_app.controller('MovieInstanceCtrl', [
+              '$scope', '$modalInstance', 'movie',
+      function($scope,   $modalInstance,   movie){
+
+        $scope.movie = movie;
+
+        $scope.cancel = function () {
+          $modalInstance.dismiss('cancel');
         };
 
-        this.user = {
+        $scope.user = {
           name: "Biff",
           rate: 0
         };
 
-        this.current_comment = "";
+        $scope.tmp = {
+          current_comment: ""
+        };
 
-        this.addComment = function() { 
+        $scope.addComment = function() { 
           var comment = {
-            body: this.current_comment,
-            author: this.user.name
+            body: $scope.tmp.current_comment,
+            author: $scope.user.name
           }
-          this.movie.comments.push(comment);
-          this.current_comment = "";
+          $scope.movie.comments.push(comment);
+          $scope.tmp.current_comment = "";
         };
 
-        this.isAddDisabled = function() { 
-          return this.post.$invalid
-        };
-    }]
+      }]
 );
 
 movie_app.controller('MovieListCtrl', [

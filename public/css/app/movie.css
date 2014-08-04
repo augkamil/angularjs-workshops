@@ -34,3 +34,35 @@
 .show-more {
   margin-top:20px;
 }
+
+.rate-movie .col-md-3, .rate-movie .col-md-12 {
+  padding-left:0;
+}
+
+.movie-description {
+  margin-bottom:10px;
+  margin-top:10px;
+  box-shadow: 1px 1px 1px 1px #ddd;
+  padding:20px 5px;
+}
+
+.modal-content span {
+  line-height:2.2;
+}
+
+.rate-movie .rate {
+  font-size: 11px;
+  padding-left:0;
+  padding-right:0;
+}
+
+.rate-movie .glyphicon-star-empty{
+  font-size:11px;
+}
+
+.close-modal {
+  margin-top:-42px;
+}
+
+.close-modal:hover {
+  font-size:28px;

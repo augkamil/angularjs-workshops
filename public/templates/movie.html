@@ -1,54 +1,40 @@
-<div class="container movie-content">
-  <div class="row">
-    <div class="col-md-3 pull-left">
-      <img ng-src="{{movies.movie.image || 'http://placehold.it/200x285' }}"/>
-    </div>
-    <div class="col-md-6 pull-left">
-      <div class="row">
-        <h1 class="col-md-9">{{movies.movie.title}}</h1>
-        <h4 class="col-md-2 release-year">({{movies.movie.release}})</h4>
-      </div>
-    </div>
-    <div class="col-md-6 pull-left">
-      <span class="glyphicon glyphicon-time"></span> {{movies.movie.time}} minut
-    </div>
-    <div class="col-md-6 pull-left">
-      <h4>reżyseria: {{movies.movie.director}}</h4>
-    </div>
-    <div class="col-md-6 pull-left">
-      <h3>{{movies.movie.average_rate}} / 10</h3>
-    </div>
-    <div class="col-md-6 pull-left">
-      <div class="row">
-        <h4 class="col-md-3">twoja ocena: </h4>
-        <h4 ng-show="movies.user.rate > 0" class="col-md-3">{{movies.user.rate}}</h4>
-        <h4 ng-hide="movies.user.rate > 0" class="col-md-3">brak oceny!</h4>
-      </div>
-      <div>
-        <rating ng-model="movies.user.rate" max="10"></rating>
-      </div>
-    </div>
+<div ng-controller="MovieCtrl">
+  <div class="modal-header">
+    <h3 class="post-author">{{movie.title}}</h3>
+    <h3 class="pull-right close-modal post-author" ng-click="cancel()">x</h3>
   </div>
-  <div class="row">
-    <h3>{{movies.movie.description}}</h3>
-  </div>
-
-  <div class="row posts-content">
-    <h3>dyskusja</h3>
-    <div class="row post-form">
-      <form name="movies.post">
-        <input class="col-md-3" type="text" ng-model="movies.current_comment" required></input>
-      </form>
-      <button class="col-md-1 btn btn-primary add-post-btn" ng-click="movies.addComment()" ng-disabled="movies.isAddDisabled()">Dodaj</button>
-    </div>
-    <ul class="posts">
-      <li class="" ng-repeat="comment in movies.movie.comments">
+  <div class="modal-body col-md-10 col-md-offset-1">
+    <div class="row">
+      <div class="col-md-4">
+        <img ng-src="{{movie.image_url || 'http://placehold.it/200x285' }}"/>
+      </div>
+      <div class="col-md-6 col-md-offset-2">
         <div class="row">
-          <h4 class="col-md-2">Komentarz #{{$index+1}}</h4>
-          <h5 class="post-author">{{comment.author}}</h5>
+          <span class="release-year">Produkcja: {{movie.release_date}}</span>
         </div>
-        {{comment.body}}
-      </li>
-    </ul>
+        <div class="row">
+          <span class="glyphicon glyphicon-time"></span> {{movie.time}} minut
+        </div>
+        <div class="row">
+          <span>reżyseria: {{movie.director}}</span>
+        </div>
+        <hr>
+        <div class="row">
+          <span>Ocena widzów: {{movie.average_rate}} / 10</span>
+        </div>
+        <div class="row rate-movie">
+          <span class="post-author col-md-12">Twoja ocena </span>
+          <span ng-show="user.rate > 0" class="col-md-3 rate">{{user.rate}}</span>
+          <span ng-hide="user.rate > 0" class="col-md-3 rate">brak oceny!</span>
+          <rating class="col-md-9" ng-model="user.rate" max="10"></rating>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="movie-description">
+        <span>{{movie.description}}</span>
+      </div>
+    </div>
   </div>
+  <div class="modal-footer"></div>
 </div>
