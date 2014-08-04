@@ -104,6 +104,14 @@ movie_app.controller('MovieListCtrl', [
           movie.comments.push(comment);
           $scope.tmp.current_comment = "";
         };
+        
+        $scope.likeTitle = function(title) {
+          alert("Polubiłeś film " + title);
+        }
+
+        $scope.likeDirector = function(director) {
+          alert("Polubiłeś reżysera " + director);
+        }
 
         $scope.open = function(id) { 
           $state.go('movies.item', {id: id});
@@ -111,6 +119,31 @@ movie_app.controller('MovieListCtrl', [
 
     }]
 );
+
+movie_app.directive('likeSomething',function() {
+  return {
+    restrict: 'A',
+    scope: {
+      whatToLike: "=",
+      showLike: "&"
+    },
+    link: function (scope, element, attrs) {
+      element.append('<i id="like-something" class="glyphicon glyphicon-heart-empty"></i>');
+      element.find('i#like-something').bind('click', function(){
+        if(element.find('i.glyphicon').hasClass('glyphicon-heart-empty')) {
+          element.find('i.glyphicon').removeClass('glyphicon-heart-empty');
+          element.find('i.glyphicon').addClass('glyphicon-heart');
+          element.find('i.glyphicon.glyphicon-heart').css('color', 'red');
+          scope.showLike({whatToLike: attrs.whatToLike});
+        } else {
+          element.find('i.glyphicon').removeClass('glyphicon-heart');
+          element.find('i.glyphicon').addClass('glyphicon-heart-empty');
+          element.find('i.glyphicon.glyphicon-heart-empty').css('color', '');
+        }
+      });
+    }
+  }
+});
 
 movie_app.directive('searchBox',function() {
   return {

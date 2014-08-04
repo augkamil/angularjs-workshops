@@ -6,7 +6,7 @@
     <movie-title></movie-title>
     <div class="row">
       <div class="col-md-3"><span>Ocena widzów: {{ movie.rate }}</span></div>
-      <div class="col-md-5"><span>Reżyser: {{ movie.director }}</span></div>
+      <div class="col-md-5" like-something what-to-like="movie.director" show-like="likeDirector(movie.director)" ><span>Reżyser: {{ movie.director }}</span></div>
       <div class="col-md-4"><span>Czas trwania: {{ movie.time }} min</span></div>
     </div>
     <div class="row">
