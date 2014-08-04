@@ -58,3 +58,8 @@ input.search {
 .comment {
   padding-left:15px;
 }
+
+#like-something:hover {
+  cursor: pointer; 
+  cursor: hand;
+}
