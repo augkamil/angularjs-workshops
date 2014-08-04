@@ -1,6 +1,6 @@
 'use strict';
 
-var movie_app = angular.module('movieApp', ['ui.bootstrap', 'restangular']);
+var movie_app = angular.module('movieApp', ['ui.bootstrap', 'restangular', 'ngAnimate', 'ui.router']);
 
 movie_app.config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.headers.patch['Content-Type'] = 'application/json';
