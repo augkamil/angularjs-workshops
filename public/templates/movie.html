@@ -20,13 +20,13 @@
         </div>
         <hr>
         <div class="row">
-          <span>Ocena widzów: {{movie.average_rate}} / 10</span>
+          <span>Ocena widzów: {{movie.rate}} / 10</span>
         </div>
         <div class="row rate-movie">
           <span class="post-author col-md-12">Twoja ocena </span>
-          <span ng-show="user.rate > 0" class="col-md-3 rate">{{user.rate}}</span>
-          <span ng-hide="user.rate > 0" class="col-md-3 rate">brak oceny!</span>
-          <rating class="col-md-9" ng-model="user.rate" max="10"></rating>
+          <span ng-show="movie.rate > 0" class="col-md-3 rate">{{movie.rate}}</span>
+          <span ng-hide="movie.rate > 0" class="col-md-3 rate">brak oceny!</span>
+          <rating class="col-md-9" ng-model="movie.rate" max="10"></rating>
         </div>
       </div>
     </div>
