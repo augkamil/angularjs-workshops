@@ -10,11 +10,11 @@
       <div class="col-md-4"><span>Czas trwania: {{ movie.time }} min</span></div>
     </div>
     <div class="row">
-      <div class="col-md-3"><button class="btn btn-default btn-xs show-more">Pokaż więcej</button></div>
+      <div class="col-md-3"><button class="btn btn-default btn-xs show-more" ng-click="open(movie.id)">Pokaż więcej</button></div>
     </div>
   </div>
   <div class="col-md-3">
-    <rate-movie></rate-movie>
+    <rating ng-model="movie.rate" max="10"></rating>
   </div>
   <div class="col-md-2">
     <button class="btn btn-primary btn-sm add-comment" ng-click="isCollapsed = !isCollapsed">Komentarze</button>

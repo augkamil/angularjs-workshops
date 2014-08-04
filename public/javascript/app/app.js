@@ -12,57 +12,72 @@ movie_app.config(function(RestangularProvider) {
   RestangularProvider.setRequestSuffix('.json');
 });
 
+movie_app.config(function($stateProvider, $urlRouterProvider) {
+
+  $urlRouterProvider.otherwise("/movies");
+
+  $stateProvider
+    .state('movies', {
+      url: "/movies",
+      abstract: true,
+      templateUrl: "templates/movies.html",
+      controller: "MovieListCtrl"
+    })
+    .state('movies.list', {
+      url: "",
+      templateUrl: "templates/movies.list.html"
+    })
+    .state('movies.item', {
+      url: "/:id",
+      templateUrl: "templates/movies.item.html",
+      controller: "MovieCtrl"
+    })
+  });
+
 
 
 movie_app.controller('MovieCtrl', [
-             '$scope', 'Restangular', 
-    function ($scope,   Restangular) {
-        this.movie = {
-          id: 1,
-          title: "Powrót do przyszłości",
-          director: "Robert Zemeckis",
-          description: "W 1985 roku dr Emmett Brown buduje wehikuł czasu. Jego przyjaciel Marty McFly przenosi się w lata 50. i niechcący przeszkadza w poznaniu się swoim rodzicom.",
-          time: 116,
-          release: 1985,
-          image: "http://1.fwcdn.pl/po/88/23/8823/7334729.6.jpg",
-          average_rate: 7.3,
-          comments: [
-            {
-              body: "asdadasd",
-              author: "Tomek"
-            },
-            {
-              body: "ghjhgjghjghjg",
-              author: "Tomek"
-            }
-          ]
-        };
+             '$scope', 'Restangular', '$stateParams', '$state', 
+    function ($scope,   Restangular,   $stateParams,   $state) {
 
-        this.user = {
+        $scope.id = parseInt($stateParams.id);
+
+        var movie = $scope.$parent.movies.filter(function (el) {
+          return el.id === $scope.id;
+        });
+
+        $scope.movie = movie[0]
+
+        $scope.tmp = {
+          current_comment: ""
+        };
+        $scope.user = {
           name: "Biff",
           rate: 0
         };
 
-        this.current_comment = "";
-
-        this.addComment = function() { 
+        $scope.addComment = function() { 
           var comment = {
-            body: this.current_comment,
-            author: this.user.name
+            body: $scope.tmp.current_comment,
+            user_name: $scope.user.name
           }
-          this.movie.comments.push(comment);
-          this.current_comment = "";
+          $scope.movie.comments.push(comment);
+          $scope.tmp.current_comment = "";
         };
 
-        this.isAddDisabled = function() { 
-          return this.post.$invalid
+        $scope.isAddDisabled = function() { 
+          return $scope.post.$invalid
+        };
+
+        $scope.back = function() { 
+          $state.go('movies.list');
         };
     }]
 );
 
 movie_app.controller('MovieListCtrl', [
-             '$scope', 'Restangular', 
-    function ($scope,   Restangular) {
+             '$scope', 'Restangular', '$state',
+    function ($scope,   Restangular,   $state) {
         $scope.movies = [];
         $scope.search = {
           title: ""
@@ -88,6 +103,10 @@ movie_app.controller('MovieListCtrl', [
           }
           movie.comments.push(comment);
           $scope.tmp.current_comment = "";
+        };
+
+        $scope.open = function(id) { 
+          $state.go('movies.item', {id: id});
         };
 
     }]
