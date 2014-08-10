@@ -1,0 +1,8 @@
+#contentUI {
+  transition: all 1s;
+}
+
+#contentUI.ng-enter #contentMain {
+  -webkit-animation: fadeInRight 1s;
+  animation: fadeInRight 1s;
+}
