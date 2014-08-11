@@ -3,6 +3,10 @@
 }
 
 #contentUI.ng-enter #contentMain {
-  -webkit-animation: fadeInRight 1s;
-  animation: fadeInRight 1s;
+  -webkit-animation: fadeInDown 1s;
+  animation: fadeInDown 1s;
+}
+
+#contentUI.ng-leave #contentMain {
+  display: none;
 }
